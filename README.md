@@ -114,4 +114,6 @@ sitemap thesite label="My site"
 
 ## Start on boot
 There are multiple ways of making the script start on boot, this is the way I decided to do it.
-`sudo nano /etc/rc.local` then insert `python /home/pi/unifi/view.py` just before `exit 0`
+`sudo nano /etc/rc.local` then insert `python /home/pi/unifi/view.py` just before `exit 0`.
+
+If you want to activate MQTT, it could be done with `python /home/pi/unifi/view.py --mqttbroker "192.168.1.30"`
