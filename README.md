@@ -82,9 +82,9 @@ While starting the script, an `ON` message will be send on `/unifi/video/sync/st
 ### OpenHAB example
 #### Items
 ```
-Switch	unifi_monitor	"Monitor [%s]"		<screen> (startRestore)	{mqtt=">[broker:/unifi/video/monitor:command:ON:1],>[broker:/unifi/video/monitor:command:OFF:0],<[broker:/unifi/video/monitor/state:state:default]"}
+Switch	unifi_monitor		"Monitor [%s]"	<screen> (startRestore)	{mqtt=">[broker:/unifi/video/monitor:command:ON:1],>[broker:/unifi/video/monitor:command:OFF:0],<[broker:/unifi/video/monitor/state:state:default]"}
 Switch	unifi_video_sync						{mqtt="<[broker:/unifi/video/sync/state:state:default]"}
-String  unifi_monitor_cmd "Commands" <camera>				{mqtt=">[broker:/unifi/video/monitor/cmd:command:10:10],>[broker:/unifi/video/monitor/cmd:command:20:20]", autoupdate="false"}
+String  unifi_monitor_cmd 	"Commands"	<camera>		{mqtt=">[broker:/unifi/video/monitor/cmd:command:10:10],>[broker:/unifi/video/monitor/cmd:command:20:20]", autoupdate="false"}
 ```
 
 #### Rule
