@@ -3,6 +3,8 @@ This script is made for viewing streams from surveillance cameras. It has been t
 
 To be able to detect stalled streams, and restart them, this script must be run as root.
 
+The start of this little project, was [this thread](https://community.ubnt.com/t5/UniFi-Video/Tutorial-Raspberry-Pi-3-RTSP-Stream-Viewer/m-p/1536448) on the Ubnt forum, and inspired by [this repository](https://github.com/Anonymousdog/displaycameras), which can also cycle through the streams, check it out if you need such functions.
+
 ## Dependencies
 This is developed and tested on a Raspberry Pi 3b+, and this is what this documentation is expecting to be used.
 
