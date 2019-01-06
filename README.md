@@ -72,7 +72,7 @@ Notice, on a raspberry pi, only one audio source can be active.
 ```
 ## MQTT
 MQTT can be used to turn the monitor on and off.
-Set the mqtt broker ip in `mqtt_broker_ip = "192.168.1.30"` and it will then subscribe to topic `/unifi/video/monitor` and `/unifi/video/monitor/cmd`.
+Enable MQTT with the argument `--mqttbroker` and it will then subscribe to topic `/unifi/video/monitor` and `/unifi/video/monitor/cmd`.
 Receiving `1`on `/unifi/video/monitor` will turn hdmi output on and start the streams, while receiving `0` will kill all omxplayer and screen processes running and turn the hdmi output off.
 
 On `/unifi/video/monitor/cmd` a `10`command can be send, which will stop all players and start them again, or `20` which will reboot the Raspberry Pi.
