@@ -1,6 +1,8 @@
 # Intro
 This script is made for viewing streams from surveillance cameras. It has been tested with streams from MotionEye, an Onvif compatible camera, and rtsp streams from UniFi Video.
 
+To be able to detect stalled streams, and restart them, this script must be run as root.
+
 ## Dependencies
 This is developed and tested on a Raspberry Pi 3b+, and this is what this documentation is expecting to be used.
 
@@ -68,3 +70,6 @@ Notice, on a raspberry pi, only one audio source can be active.
 	}
 }
 ```
+## Start on boot
+There are multiple ways of making the script start on boot, this is the way I decided to do it.
+`sudo nano /etc/rc.local` then insert `python /home/pi/unifi/view.py` just before `exit 0`
