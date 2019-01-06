@@ -1,8 +1,12 @@
+# Intro
+This script is made for viewing streams from surveillance cameras. It has been tested with streams from MotionEye, an Onvif compatible camera, and rtsp streams from UniFi Video.
+
 ## Dependencies
 This is developed and tested on a Raspberry Pi 3b+, and this is what this documentation is expecting to be used.
 
 Before starting, make sure your system is up to date, then use `sudo apt-get install omxplayer screen` to install omxplayer and screen, which is both needed for this script to function.
 
+# Configuration
 ## Layouts
 Multiple layouts can be stored, and selected with the --layout argument, as default `inc_layout_2x2.cfg` will be used.
 
