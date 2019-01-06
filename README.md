@@ -70,6 +70,46 @@ Notice, on a raspberry pi, only one audio source can be active.
 	}
 }
 ```
+## MQTT
+MQTT can be used to turn the monitor on and off.
+Set the mqtt broker ip in `mqtt_broker_ip = "192.168.1.30"` and it will then subscribe to topic `/unifi/video/monitor` and `/unifi/video/monitor/cmd`.
+Receiving `1`on `/unifi/video/monitor` will turn hdmi output on and start the streams, while receiving `0` will kill all omxplayer and screen processes running and turn the hdmi output off.
+
+On `/unifi/video/monitor/cmd` a `10`command can be send, which will stop all players and start them again, or `20` which will reboot the Raspberry Pi.
+
+While starting the script, an `ON` message will be send on `/unifi/video/sync/state`, which can be used to trigger a rule in the system handling the MQTT messages.
+
+### OpenHAB example
+#### Items
+```
+Switch	unifi_monitor	"Monitor [%s]"		<screen> (startRestore)	{mqtt=">[broker:/unifi/video/monitor:command:ON:1],>[broker:/unifi/video/monitor:command:OFF:0],<[broker:/unifi/video/monitor/state:state:default]"}
+Switch	unifi_video_sync						{mqtt="<[broker:/unifi/video/sync/state:state:default]"}
+String  unifi_monitor_cmd "Commands" <camera>				{mqtt=">[broker:/unifi/video/monitor/cmd:command:10:10],>[broker:/unifi/video/monitor/cmd:command:20:20]", autoupdate="false"}
+```
+
+#### Rule
+```
+rule "Sync unifi modules"
+when
+	Item unifi_video_sync received update
+then
+	var String itemState = unifi_monitor.state.toString()
+	sendCommand(unifi_monitor, itemState)
+end
+```
+
+#### Sitemap
+```
+sitemap thesite label="My site"
+{
+	Frame label="UniFi"
+	{
+		Switch item=unifi_monitor
+		Switch item=unifi_monitor_cmd mappings=[10="Repair",20="Reboot"]
+	}
+}
+```
+
 ## Start on boot
 There are multiple ways of making the script start on boot, this is the way I decided to do it.
 `sudo nano /etc/rc.local` then insert `python /home/pi/unifi/view.py` just before `exit 0`
