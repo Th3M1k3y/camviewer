@@ -54,7 +54,7 @@ Notice, on a raspberry pi, only one audio source can be active.
 	},
 	"c4": {
 		"name": "Front door",
-    "args":"--vol -2500 --live --timeout 30",
+		"args": "--vol -2500 --live --timeout 30",
 		"rtsp": "rtsp://192.168.1.30:7447/5c2e1fa0e4b07d23111c8161_1"
 	}
 }
